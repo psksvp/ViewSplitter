@@ -15,11 +15,11 @@ public struct HSplitter<ControlView: View, LeftContent: View, RightContent: View
   public var leftView: LeftContent
   public var rightView: RightContent
 
-  public init(viewModel: SplitterConfig,
+  public init(config: SplitterConfig,
               @ViewBuilder leftView: () -> LeftContent,
               @ViewBuilder rightView: () -> RightContent)
   {
-    self.config = viewModel
+    self.config = config
     self.leftView = leftView()
     self.rightView = rightView()
   }
