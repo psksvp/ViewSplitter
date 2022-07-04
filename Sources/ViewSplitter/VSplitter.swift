@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-public struct VSplitter<ControlView: View, TopContent: View, BottomContent: View>: View
+public struct VSplitter<TopContent: View, BottomContent: View>: View
 {
   @ObservedObject public var config: SplitterConfig
 
