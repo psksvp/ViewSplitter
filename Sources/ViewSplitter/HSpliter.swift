@@ -52,9 +52,9 @@ public struct HSplitter<LeftContent: View, RightContent: View>: View
           {
             ZStack
             {
-              Rectangle()
-                .fill(.bar)
-                .frame(width: 3, height: geometry.size.height)
+//              Rectangle()
+//                .fill(.bar)
+//                .frame(width: 3, height: geometry.size.height)
               Image(systemName: "arrow.left.arrow.right.circle.fill")
                 .resizable()
                 .frame(width: 48, height: 48)
