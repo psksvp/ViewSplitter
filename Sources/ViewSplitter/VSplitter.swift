@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 
-@available(macOS 11.0, *)
+@available(iOS 15.0, *)
+@available(macOS 12.0, *)
 public struct VSplitter<TopContent: View, BottomContent: View>: View
 {
   @ObservedObject public var config: SplitterConfig
@@ -52,7 +53,7 @@ public struct VSplitter<TopContent: View, BottomContent: View>: View
             ZStack
             {
               Image(systemName: "arrow.up.arrow.down.circle.fill").frame(width: 32, height: 32)
-             }
+            }
           }
            .frame(minWidth: 0, maxWidth: .infinity)
         }
