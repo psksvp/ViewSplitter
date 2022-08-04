@@ -51,9 +51,7 @@ public struct VSplitter<TopContent: View, BottomContent: View>: View
           {
             ZStack
             {
-              Image(systemName: "arrow.left.arrow.right.circle.fill")
-//              Circle().fill()
-//                      .frame(width: 24, height: 24)
+              Image(systemName: "arrow.up.arrow.down.circle.fill").frame(width: 32, height: 32)
              }
           }
            .frame(minWidth: 0, maxWidth: .infinity)
