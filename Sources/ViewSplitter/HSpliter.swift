@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-@available(macOS 11.0, *)
+@available(macOS 12.0, *)
 public struct HSplitter<LeftContent: View, RightContent: View>: View
 {
   @ObservedObject public var config: SplitterConfig
@@ -51,7 +51,12 @@ public struct HSplitter<LeftContent: View, RightContent: View>: View
           {
             ZStack
             {
-              Image(systemName: "arrow.left.arrow.right.circle.fill").frame(width: 32, height: 32)
+              Rectangle()
+                .fill(.foreground)
+                .frame(width: 5, height: geometry.size.height)
+              Image(systemName: "arrow.left.arrow.right.circle.fill")
+                .resizable()
+                .frame(width: 64, height: 64)
             }
           }
            .frame(minWidth: 0, maxWidth: .infinity)
