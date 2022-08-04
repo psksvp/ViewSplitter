@@ -41,7 +41,7 @@ public struct HSplitter<LeftContent: View, RightContent: View>: View
           Group
           {
             self.rightView.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                           .frame(width: geometry.size.width * self.config.middle - self.config.current)
+                          .frame(width: geometry.size.width * self.config.middle - self.config.current)
           }
         }
         HSplitterController(viewModel: self.config, geometry: geometry)
