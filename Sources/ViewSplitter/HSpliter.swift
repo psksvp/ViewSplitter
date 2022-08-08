@@ -10,20 +10,23 @@ import SwiftUI
 
 @available(iOS 15.0, *)
 @available(macOS 12.0, *)
-public struct HSplitter<LeftContent: View, RightContent: View>: View
+public struct HSplitter<LeftContent: View, RightContent: View, DividerView: View>: View
 {
   @ObservedObject public var config: SplitterConfig
 
   public var leftView: LeftContent
   public var rightView: RightContent
+  public var dividerView: DividerView
 
   public init(config: SplitterConfig,
               @ViewBuilder leftView: () -> LeftContent,
-              @ViewBuilder rightView: () -> RightContent)
+              @ViewBuilder rightView: () -> RightContent,
+              @ViewBuilder dividerView: () -> DividerView)
   {
     self.config = config
     self.leftView = leftView()
     self.rightView = rightView()
+    self.dividerView = dividerView()
   }
 
   public var body: some View
@@ -50,15 +53,7 @@ public struct HSplitter<LeftContent: View, RightContent: View>: View
         {
           Group
           {
-            ZStack
-            {
-//              Rectangle()
-//                .fill(.bar)
-//                .frame(width: 3, height: geometry.size.height)
-              Image(systemName: "arrow.left.arrow.right.circle.fill")
-                .resizable()
-                .frame(width: 48, height: 48)
-            }
+            self.dividerView
           }
            .frame(minWidth: 0, maxWidth: .infinity)
         }
