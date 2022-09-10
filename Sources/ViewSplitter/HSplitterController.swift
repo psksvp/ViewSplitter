@@ -10,16 +10,16 @@ import SwiftUI
 
 struct HSplitterController<Content: View>: View
 {
-  @ObservedObject var viewModel: SplitterConfig
+  @ObservedObject var viewConfig: SplitterConfig
 
   var geometry: GeometryProxy
   let content: Content
 
-  public init(viewModel: SplitterConfig,
+  public init(viewConfig: SplitterConfig,
               geometry: GeometryProxy,
               @ViewBuilder content: () -> Content)
   {
-    self.viewModel = viewModel
+    self.viewConfig = viewConfig
     self.content = content()
     self.geometry = geometry
   }
@@ -27,32 +27,32 @@ struct HSplitterController<Content: View>: View
   var body: some View
   {
     HStack { content }
-    .offset(x: geometry.size.width * (0.5 - viewModel.middle) + viewModel.current)
+    .offset(x: geometry.size.width * (0.5 - viewConfig.middle) + viewConfig.current)
     .gesture(DragGesture().onChanged(onDragChanged)
                           .onEnded(onDragEnded))
   }
 
   fileprivate var maxLimit: CGFloat
   {
-    geometry.size.width * (viewModel.middle - viewModel.range.upperBound)
+    geometry.size.width * (viewConfig.middle - viewConfig.range.upperBound)
   }
 
   fileprivate var minLimit: CGFloat
   {
-    geometry.size.width * (viewModel.middle - viewModel.range.lowerBound)
+    geometry.size.width * (viewConfig.middle - viewConfig.range.lowerBound)
   }
 
   fileprivate func onDragChanged(_ gesture: DragGesture.Value)
   {
-    let width = viewModel.previous + gesture.translation.width
+    let width = viewConfig.previous + gesture.translation.width
 
-    viewModel.current = max(maxLimit, min(minLimit, width))
-    viewModel.isMax = viewModel.current == maxLimit
-    viewModel.isMin = viewModel.current == minLimit
+    viewConfig.current = max(maxLimit, min(minLimit, width))
+    viewConfig.isMax = viewConfig.current == maxLimit
+    viewConfig.isMin = viewConfig.current == minLimit
   }
 
   fileprivate func onDragEnded(_ gesture: DragGesture.Value)
   {
-    viewModel.previous = viewModel.current
+    viewConfig.previous = viewConfig.current
   }
 }

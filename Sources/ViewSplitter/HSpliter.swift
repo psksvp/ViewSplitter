@@ -1,3 +1,4 @@
+
 //
 //  HSplitter.swift
 //  
@@ -49,7 +50,7 @@ public struct HSplitter<LeftContent: View, RightContent: View, DividerView: View
                           .frame(width: geometry.size.width * self.config.middle - self.config.current)
           }
         }
-        HSplitterController(viewModel: self.config, geometry: geometry)
+        HSplitterController(viewConfig: self.config, geometry: geometry)
         {
           Group
           {

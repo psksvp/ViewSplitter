@@ -46,7 +46,7 @@ public struct VSplitter<TopContent: View, BottomContent: View>: View
                            .frame(height: geometry.size.height * self.config.middle - self.config.current)
           }
         }
-        HSplitterController(viewModel: self.config, geometry: geometry)
+        HSplitterController(viewConfig: self.config, geometry: geometry)
         {
           Group
           {
